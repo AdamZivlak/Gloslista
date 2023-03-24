@@ -27,7 +27,9 @@
                 string command = argument[0];
                 if (command == "quit")
                 {
-                    Console.WriteLine("Goodbye!"); // FIXME: Bryter inte loop
+                    Console.WriteLine("Goodbye!");
+                    break;
+                    // FIXME: Bryter inte loop
                 }
                 else if (command == "load") // FIXME: Genererar ingen information, (det gör den visst!)
                 {
@@ -103,13 +105,7 @@
                     {
                         Console.WriteLine("Write word to be translated: ");
                         string TranslateWord = Console.ReadLine();
-                        foreach (SweEngGloss gloss in dictionary)
-                        {
-                            if (gloss.word_swe == TranslateWord)
-                                Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
-                            if (gloss.word_eng == TranslateWord)
-                                Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
-                        }
+                        TranslateTheWord(TranslateWord);
                     }
                 }
                 else
@@ -118,6 +114,17 @@
                 }
             }
             while (true);
+        }
+
+        private static void TranslateTheWord(string TranslateWord)
+        {
+            foreach (SweEngGloss gloss in dictionary)
+            {
+                if (gloss.word_swe == TranslateWord)
+                    Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
+                if (gloss.word_eng == TranslateWord)
+                    Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
+            }
         }
 
         private static void WriteTheHelp()
