@@ -45,6 +45,10 @@ namespace MJU23v_D10_inl_sveng
                 {
                     AddNewWord(argument);
                 }
+                else if (command == "save")
+                {
+                    Console.WriteLine($"'{command}' command NYI"); // FIXME: NYI
+                }
                 else if (command == "delete")
                 {
                     DeleteTheWordInDictionary(argument);
@@ -114,7 +118,6 @@ namespace MJU23v_D10_inl_sveng
                 }
             }
         }
-
         private static void ListTheLoadedDictionary()
         {
             try
@@ -133,7 +136,6 @@ namespace MJU23v_D10_inl_sveng
                 Console.WriteLine("The file was not found");
             }
         }
-
         private static void AddNewWord(string[] argument)// FIXME: Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
         {
             if (argument.Length == 3)
@@ -149,7 +151,6 @@ namespace MJU23v_D10_inl_sveng
                 dictionary.Add(new SweEngGloss(SwedishNew, EnglishNew));
             }
         }
-
         private static void TranslateTheWord(string TranslateWord)
         {
             foreach (SweEngGloss gloss in dictionary)
@@ -160,7 +161,6 @@ namespace MJU23v_D10_inl_sveng
                     Console.WriteLine($"Swedish for {gloss.word_eng} is {gloss.word_swe}");
             }
         }
-
         private static void WriteTheHelp()
         {
             Console.WriteLine("Welcome to the dictionary app!");
