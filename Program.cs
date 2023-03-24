@@ -31,21 +31,7 @@
                 }
                 else if (command == "load") // FIXME: Genererar ingen information, (det gör den visst!)
                 {
-                    if (argument.Length == 2)
-                    {
-                        using (StreamReader sr = new StreamReader(argument[1]))
-                        {
-                            dictionary = new List<SweEngGloss>(); // Empty it!
-                            string line = sr.ReadLine();
-                            while (line != null)
-                            {
-                                SweEngGloss gloss = new SweEngGloss(line);
-                                dictionary.Add(gloss);
-                                line = sr.ReadLine();
-                            }
-                        }
-                    }
-                    else if (argument.Length == 1)
+                    if (argument.Length == 1)
                     {
                         using (StreamReader sr = new StreamReader(defaultFile))
                         {
