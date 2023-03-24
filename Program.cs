@@ -19,7 +19,7 @@
         static void Main(string[] args)
         {
             string defaultFile = "..\\..\\..\\dict\\sweeng.lis";
-            Console.WriteLine("Welcome to the dictionary app!");
+            WriteTheHelp();
             do
             {
                 Console.Write("> ");
@@ -27,11 +27,11 @@
                 string command = argument[0];
                 if (command == "quit")
                 {
-                    Console.WriteLine("Goodbye!");
+                    Console.WriteLine("Goodbye!"); // FIXME: Bryter inte loop
                 }
-                else if (command == "load")
+                else if (command == "load") // FIXME: Genererar ingen information
                 {
-                    if(argument.Length == 2)
+                    if (argument.Length == 2)
                     {
                         using (StreamReader sr = new StreamReader(argument[1]))
                         {
@@ -45,7 +45,7 @@
                             }
                         }
                     }
-                    else if(argument.Length == 1)
+                    else if (argument.Length == 1)
                     {
                         using (StreamReader sr = new StreamReader(defaultFile))
                         {
@@ -62,7 +62,7 @@
                 }
                 else if (command == "list")
                 {
-                    foreach(SweEngGloss gloss in dictionary)
+                    foreach (SweEngGloss gloss in dictionary)
                     {
                         Console.WriteLine($"{gloss.word_swe,-10}  - {gloss.word_eng,-10}");
                     }
@@ -73,7 +73,7 @@
                     {
                         dictionary.Add(new SweEngGloss(argument[1], argument[2]));
                     }
-                    else if(argument.Length == 1)
+                    else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: ");
                         string s = Console.ReadLine();
@@ -87,7 +87,8 @@
                     if (argument.Length == 3)
                     {
                         int index = -1;
-                        for (int i = 0; i < dictionary.Count; i++) {
+                        for (int i = 0; i < dictionary.Count; i++)
+                        {
                             SweEngGloss gloss = dictionary[i];
                             if (gloss.word_swe == argument[1] && gloss.word_eng == argument[2])
                                 index = i;
@@ -114,7 +115,7 @@
                 {
                     if (argument.Length == 2)
                     {
-                        foreach(SweEngGloss gloss in dictionary)
+                        foreach (SweEngGloss gloss in dictionary)
                         {
                             if (gloss.word_swe == argument[1])
                                 Console.WriteLine($"English for {gloss.word_swe} is {gloss.word_eng}");
@@ -141,6 +142,18 @@
                 }
             }
             while (true);
+        }
+
+        private static void WriteTheHelp()
+        {
+            Console.WriteLine("Welcome to the dictionary app!");
+            Console.WriteLine();
+            Console.WriteLine("quit  -  ");
+            Console.WriteLine("load  -  ");
+            Console.WriteLine("list  -  ");
+            Console.WriteLine("new  -  ");
+            Console.WriteLine("delete  -  ");
+            Console.WriteLine("translate  -  ");
         }
     }
 }
