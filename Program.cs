@@ -1,4 +1,7 @@
-﻿namespace MJU23v_D10_inl_sveng
+﻿using System.Data;
+using System.Net.Http.Headers;
+
+namespace MJU23v_D10_inl_sveng
 {
     internal class Program
     {
@@ -29,15 +32,14 @@
                 {
                     Console.WriteLine("Goodbye!");
                     break;
-                    // FIXME: Bryter inte loop
                 }
-                else if (command == "load") // FIXME: Genererar ingen information, (det gör den visst!)
+                else if (command == "load")
                 {
                     LoadTheDictionary(defaultFile, argument);
                 }
                 else if (command == "list")
                 {
-                    ListTheLoadedDictionary();
+                    ListTheLoadedDictionary(); // FIXME: System.NullReferenceException: Object reference not set to an instance of an object.
                 }
                 else if (command == "new")
                 {
@@ -65,6 +67,7 @@
         }
 
         private static void DeleteTheWordInDictionary(string[] argument)
+        //FIXME: Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
         {
             if (argument.Length == 3)
             {
@@ -95,7 +98,7 @@
         }
 
         private static void LoadTheDictionary(string defaultFile, string[] argument)
-        {
+        { 
             if (argument.Length == 1)
             {
                 using (StreamReader sr = new StreamReader(defaultFile))
@@ -114,13 +117,24 @@
 
         private static void ListTheLoadedDictionary()
         {
-            foreach (SweEngGloss gloss in dictionary)
+            try
             {
-                Console.WriteLine($"{gloss.word_swe,-10}  - {gloss.word_eng,-10}");
+                foreach (SweEngGloss gloss in dictionary)
+                {
+                    Console.WriteLine($"{gloss.word_swe,-10}  - {gloss.word_eng,-10}");
+                }
+            }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine("The file was not found");
+            }
+            catch (Exception)
+            {
+                Console.WriteLine("The file was not found");
             }
         }
 
-        private static void AddNewWord(string[] argument)
+        private static void AddNewWord(string[] argument)// FIXME: Unhandled exception. System.NullReferenceException: Object reference not set to an instance of an object.
         {
             if (argument.Length == 3)
             {
