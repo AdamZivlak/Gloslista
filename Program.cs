@@ -148,12 +148,12 @@
         {
             Console.WriteLine("Welcome to the dictionary app!");
             Console.WriteLine();
-            Console.WriteLine("quit  -  ");
-            Console.WriteLine("load  -  ");
-            Console.WriteLine("list  -  ");
-            Console.WriteLine("new  -  ");
-            Console.WriteLine("delete  -  ");
-            Console.WriteLine("translate  -  ");
+            Console.WriteLine("quit  -  quit the dictionary app");
+            Console.WriteLine("load  -  load the dictionary");
+            Console.WriteLine("list  -  list the dictionary");
+            Console.WriteLine("new  -  add a new word to the dictionary");
+            Console.WriteLine("delete  -  delete a word in the dictionary");
+            Console.WriteLine("translate  -  translate a word");
         }
     }
 }
