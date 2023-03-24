@@ -76,7 +76,7 @@
                     else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: ");
-                        string s = Console.ReadLine();
+                        string s = Console.ReadLine();        // FIXME: s och e otydligt, ändra namn
                         Console.Write("Write word in English: ");
                         string e = Console.ReadLine();
                         dictionary.Add(new SweEngGloss(s, e));
@@ -98,7 +98,7 @@
                     else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word in Swedish: ");
-                        string s = Console.ReadLine();
+                        string s = Console.ReadLine();      // FIXME: s och e otydligt, ändra namn
                         Console.Write("Write word in English: ");
                         string e = Console.ReadLine();
                         int index = -1;
@@ -126,7 +126,7 @@
                     else if (argument.Length == 1)
                     {
                         Console.WriteLine("Write word to be translated: ");
-                        string s = Console.ReadLine();
+                        string s = Console.ReadLine();      // FIXME: s otydligt, ändra namn
                         foreach (SweEngGloss gloss in dictionary)
                         {
                             if (gloss.word_swe == s)
