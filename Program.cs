@@ -35,7 +35,7 @@ namespace MJU23v_D10_inl_sveng
                 }
                 else if (command == "load")
                 {
-                    LoadTheDictionary(defaultFile, argument);
+                    LoadTheDictionary(defaultFile);
                 }
                 else if (command == "list")
                 {
@@ -101,9 +101,9 @@ namespace MJU23v_D10_inl_sveng
             }
         }
 
-        private static void LoadTheDictionary(string defaultFile, string[] argument)
-        { 
-            if (argument.Length == 1)
+        private static void LoadTheDictionary(string defaultFile)
+        {
+            try
             {
                 using (StreamReader sr = new StreamReader(defaultFile))
                 {
@@ -117,6 +117,10 @@ namespace MJU23v_D10_inl_sveng
                     }
                 }
             }
+            catch (FileNotFoundException)
+            {
+                Console.WriteLine($"Could not find file: '{defaultFile}'");
+            }
         }
         private static void ListTheLoadedDictionary()
         {
@@ -129,7 +133,7 @@ namespace MJU23v_D10_inl_sveng
             }
             catch (FileNotFoundException)
             {
-                Console.WriteLine("The file was not found");
+                Console.WriteLine($"The file was not found ");
             }
             catch (Exception)
             {
