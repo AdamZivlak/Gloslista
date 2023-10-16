@@ -1,1 +1,2 @@
-# MJU23v_D10_inl_sveng# MJU23v_D10_inl_sveng
+# GLoslista
+Översätter svenska och engelska ord
